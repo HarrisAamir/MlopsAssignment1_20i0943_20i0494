@@ -4,6 +4,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import string
 from nltk.corpus import stopwords
+import nltk
+nltk.download('stopwords')
 
 # Load and preprocess the dataset
 df = pd.read_csv('Dataset/spam2.csv', encoding='utf-8')
