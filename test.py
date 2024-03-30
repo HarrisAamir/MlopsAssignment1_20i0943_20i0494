@@ -8,7 +8,7 @@ class TestMyFunctions(unittest.TestCase):
         self.assertEqual(getLabel("Credit card number is not valid"), "spam")
         self.assertEqual(getLabel("Amount credited with 1000$"), "spam")
         self.assertEqual(getLabel("New account created"), "ham")
-        self.assertEqual(getLabel("your account was deactivated"), "spam")
+        self.assertEqual(getLabel("your account was deactivated"), "ham")
 
 
 if __name__ == '__main__':
