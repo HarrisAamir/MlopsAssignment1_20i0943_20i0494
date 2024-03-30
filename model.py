@@ -24,8 +24,9 @@ def text_process(mess):
     # punctuation checking
     nopunc = [char for char in mess if char not in string.punctuation]
     nopunc = ''.join(nopunc)
-    # Removing Stopwords
-    return ' '.join([word for word in nopunc.split() if word.lower() not in STOPWORDS])
+    tex=' '.join([word for word in nopunc.split() if word.lower() not in STOPWORDS])
+    return tex
+
 
 df['clean_msg'] = df.text.apply(text_process)
 X = df.clean_msg
