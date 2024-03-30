@@ -12,7 +12,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    sh docker push harrisaamir/mlops_assign1:ass1
+                    sh "docker push harrisaamir/mlops_assign1:ass1"
                 }
             }
         }
