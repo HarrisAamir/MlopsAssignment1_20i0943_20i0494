@@ -6,12 +6,14 @@ from sklearn.naive_bayes import MultinomialNB
 import string
 from nltk.corpus import stopwords
 
+
 # Load and preprocess the dataset
 df = pd.read_csv('Dataset/spam2.csv', encoding='utf-8')
 df.dropna(how="any", inplace=True, axis=1)
 df.columns = ['label', 'text']
-df['label_num'] = df.label.map({'ham':0, 'spam':1})
+df['label_num'] = df.label.map({'ham': 0, 'spam': 1})
 df['message_len'] = df.text.apply(len)
+
 
 def text_process(mess):
     """
@@ -21,11 +23,12 @@ def text_process(mess):
     3. Returns a list of the cleaned text
     """
     STOPWORDS = stopwords.words('english') + ['u', 'ü', 'ur', '4', '2', 'im', 'dont', 'doin', 'ure']
-    #punctuation checking
+    # punctuation checking
     nopunc = [char for char in mess if char not in string.punctuation]
     nopunc = ''.join(nopunc)
     # Removing Stopwords
     return ' '.join([word for word in nopunc.split() if word.lower() not in STOPWORDS])
+
 
 df['clean_msg'] = df.text.apply(text_process)
 X = df.clean_msg
@@ -38,7 +41,8 @@ X_test_dtm = vect.transform(X_test)
 nb = MultinomialNB()
 nb.fit(X_train_dtm, y_train)
 
-def getLabel(text):
+
+def get_label(text):
     custom_text = text
     custom_text_dtm = vect.transform([custom_text])
     prediction = nb.predict(custom_text_dtm)
@@ -46,8 +50,6 @@ def getLabel(text):
     predicted_label = label2num[prediction[0]]
     return predicted_label
 
-print(getLabel("credit card payment of 2000"))
-print(getLabel("what are you doing?"))
 
-
-#Define a Flask route for making predictions
+print(get_label("credit card payment of 2000"))
+print(get_label("what are you doing?"))
