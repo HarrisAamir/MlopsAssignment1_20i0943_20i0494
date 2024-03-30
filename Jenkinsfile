@@ -12,10 +12,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                        sh 'docker push assignment1'
-                    }
+                    sh docker push harrisaamir/mlops_assign1:ass1
                 }
             }
         }
