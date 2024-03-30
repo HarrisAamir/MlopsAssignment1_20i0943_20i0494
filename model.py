@@ -4,10 +4,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import string
 from nltk.corpus import stopwords
-import nltk
-nltk.download('stopwords')
-
-
 
 # Load and preprocess the dataset
 df = pd.read_csv('Dataset/spam2.csv', encoding='utf-8')
@@ -32,7 +28,6 @@ def text_process(mess):
     return tex
 
 
-
 df['clean_msg'] = df.text.apply(text_process)
 X = df.clean_msg
 y = df.label_num
@@ -47,9 +42,7 @@ nb = MultinomialNB()
 nb.fit(X_train_dtm, y_train)
 
 
-
 def getLabel(text):
-
     custom_text = text
     custom_text_dtm = vect.transform([custom_text])
     prediction = nb.predict(custom_text_dtm)
@@ -58,7 +51,5 @@ def getLabel(text):
     return predicted_label
 
 
-
 print(getLabel("credit card payment of 2000"))
 print(getLabel("what are you doing?"))
-
