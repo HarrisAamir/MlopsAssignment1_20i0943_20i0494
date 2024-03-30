@@ -1,0 +1,19 @@
+name: Test Code on Test Branch
+
+on:
+  push:
+    branches: [ test ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python environment  # Replace for other languages
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install -r requirements.txt  # Adjust for your requirements file
+      - name: Run unit tests
+        run: python test.py  # Replace with your test script name
