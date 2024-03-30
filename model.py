@@ -20,7 +20,7 @@ def text_process(mess):
     2. Remove all stopwords
     3. Returns a list of the cleaned text
     """
-    STOPWORDS = stopwords.words('english') + ['u', 'ü', 'ur', '4', '2', 'im', 'dont', 'doin', 'ure']
+    STOPWORDS = stopwords.words('english')
     #punctuation checking
     nopunc = [char for char in mess if char not in string.punctuation]
     nopunc = ''.join(nopunc)
@@ -48,6 +48,3 @@ def getLabel(text):
 
 print(getLabel("credit card payment of 2000"))
 print(getLabel("what are you doing?"))
-
-
-#Define a Flask route for making predictions
