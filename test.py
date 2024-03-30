@@ -1,6 +1,7 @@
 import unittest
 from model import getLabel
 
+
 class TestMyFunctions(unittest.TestCase):
 
     def test_add_numbers(self):
@@ -9,5 +10,6 @@ class TestMyFunctions(unittest.TestCase):
         self.assertEqual(getLabel("New account created"), "ham") 
         self.assertEqual(getLabel("your account was deactivated "), "ham") 
         
+
 if __name__ == '__main__':
     unittest.main()
